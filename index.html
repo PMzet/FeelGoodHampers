@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Gift - Your Premier Flower & Gift Shop in Zimbabwe</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:+263712345678"><i class="fas fa-phone"></i> +263 71 234 5678</a>
+                    <a href="mailto:info@bloomandgift.co.zw"><i class="fas fa-envelope"></i> info@bloomandgift.co.zw</a>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                    <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Bloom & Gift</h1>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="flowers.html">Flowers</a></li>
+                        <li><a href="gifts.html">Gifts</a></li>
+                        <li><a href="occasions.html">Occasions</a></li>
+                        <li><a href="custom.html">Custom Orders</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slide active">
+                    <div class="slide-content">
+                        <h2>Beautiful Flowers for Every Occasion</h2>
+                        <p>Express your feelings with our stunning floral arrangements</p>
+                        <a href="flowers.html" class="btn btn-primary">Shop Now</a>
+                    </div>
+                    <div class="slide-image" style="background-image: url('images/slider/slider-1.jpg');"></div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h2>Unique Gift Ideas</h2>
+                        <p>Discover the perfect gift for your loved ones</p>
+                        <a href="gifts.html" class="btn btn-primary">Browse Gifts</a>
+                    </div>
+                    <div class="slide-image" style="background-image: url('images/slider/slider-2.jpg');"></div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h2>Money Bouquets</h2>
+                        <p>Create stunning money flower arrangements for special occasions</p>
+                        <a href="custom.html" class="btn btn-primary">Order Now</a>
+                    </div>
+                    <div class="slide-image" style="background-image: url('images/slider/slider-3.jpg');"></div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+                <div class="slider-arrows">
+                    <button class="arrow prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="arrow next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="featured-categories">
+        <div class="container">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/anniversary.jpg" alt="Anniversary Flowers">
+                    </div>
+                    <h3>Anniversary</h3>
+                    <a href="flowers.html?category=anniversary" class="btn btn-outline">View Collection</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/birthday.jpg" alt="Birthday Flowers">
+                    </div>
+                    <h3>Birthday</h3>
+                    <a href="flowers.html?category=birthday" class="btn btn-outline">View Collection</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/sympathy.jpg" alt="Sympathy Flowers">
+                    </div>
+                    <h3>Sympathy</h3>
+                    <a href="flowers.html?category=sympathy" class="btn btn-outline">View Collection</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/money-bouquets.jpg" alt="Money Bouquets">
+                    </div>
+                    <h3>Money Bouquets</h3>
+                    <a href="custom.html" class="btn btn-outline">View Collection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="best-sellers">
+        <div class="container">
+            <h2 class="section-title">Best Sellers</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-img">
+                        <img src="images/products/red-rose-bouquet.jpg" alt="Red Rose Bouquet">
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-product-id="1"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="quick-view" data-product-id="1"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Red Rose Bouquet</h3>
+                        <div class="product-price">$35.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(42)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/products/mixed-tulips.jpg" alt="Mixed Tulips">
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-product-id="2"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="quick-view" data-product-id="2"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Mixed Tulips</h3>
+                        <div class="product-price">$29.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(28)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">New</div>
+                    <div class="product-img">
+                        <img src="images/products/lavender-bouquet.jpg" alt="Lavender Bouquet">
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-product-id="3"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="quick-view" data-product-id="3"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Lavender Bouquet</h3>
+                        <div class="product-price">$39.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(18)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/products/sunflower-bouquet.jpg" alt="Sunflower Bouquet">
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-product-id="4"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="quick-view" data-product-id="4"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Sunflower Bouquet</h3>
+                        <div class="product-price">$32.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(36)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="flowers.html" class="btn btn-secondary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Bloom & Gift</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Same-day delivery in most areas across Zimbabwe</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-flower"></i>
+                    </div>
+                    <h3>Fresh Flowers</h3>
+                    <p>We source the freshest flowers daily for your arrangements</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Custom Designs</h3>
+                    <p>Create unique arrangements for any occasion</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>Multiple payment options including Payfast, Ecocash, and Innbucks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The flowers were absolutely stunning and exceeded my expectations. The delivery was prompt, and the arrangement was exactly as pictured. I'll definitely be ordering again!"</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonials/customer-1.jpg" alt="Customer 1">
+                            <div class="author-info">
+                                <h4>Tatenda M.</h4>
+                                <span>Harare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"I ordered a money bouquet for my sister's graduation and it was absolutely perfect! The creativity and attention to detail were impressive. Everyone loved it and it made her day special."</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonials/customer-2.jpg" alt="Customer 2">
+                            <div class="author-info">
+                                <h4>Nyasha K.</h4>
+                                <span>Bulawayo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"The service was excellent from start to finish. The website was easy to use, and I appreciate the variety of payment options available. My wife loved her anniversary flowers!"</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonials/customer-3.jpg" alt="Customer 3">
+                            <div class="author-info">
+                                <h4>Tawanda C.</h4>
+                                <span>Mutare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <div class="testimonial-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Order Your Perfect Arrangement?</h2>
+                <p>Browse our collections or create a custom order today.</p>
+                <div class="cta-buttons">
+                    <a href="flowers.html" class="btn btn-primary">Shop Now</a>
+                    <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-widget">
+                        <h3>About Us</h3>
+                        <p>Bloom & Gift is Zimbabwe's premier flower and gift shop, specializing in beautiful floral arrangements, unique gifts, and custom money bouquets for all occasions.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="flowers.html">Flowers</a></li>
+                            <li><a href="gifts.html">Gifts</a></li>
+                            <li><a href="occasions.html">Occasions</a></li>
+                            <li><a href="custom.html">Custom Orders</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Customer Service</h3>
+                        <ul>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="delivery.html">Delivery Information</a></li>
+                            <li><a href="payment.html">Payment Options</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Contact Information</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Samora Machel Ave, Harare, Zimbabwe</li>
+                            <li><i class="fas fa-phone"></i> +263 71 234 5678</li>
+                            <li><i class="fas fa-envelope"></i> info@bloomandgift.co.zw</li>
+                            <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <p>&copy; 2023 Bloom & Gift. All Rights Reserved.</p>
+                </div>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <img src="images/payment/payfast.png" alt="Payfast">
+                    <img src="images/payment/ecocash.png" alt="Ecocash">
+                    <img src="images/payment/innbucks.png" alt="Innbucks">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="product-quick-view">
+                <div class="product-quick-view-image">
+                    <img src="" alt="Product Image" id="modalProductImage">
+                </div>
+                <div class="product-quick-view-details">
+                    <h2 id="modalProductTitle"></h2>
+                    <div class="product-price" id="modalProductPrice"></div>
+                    <div class="product-rating" id="modalProductRating"></div>
+                    <p class="product-description" id="modalProductDescription"></p>
+                    <div class="product-meta">
+                        <div class="product-category">Category: <span id="modalProductCategory"></span></div>
+                    </div>
+                    <div class="product-quantity">
+                        <label for="quantity">Quantity:</label>
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" id="quantity" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    <a href="#" class="btn btn-secondary view-product-btn">View Full Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+</body>
+</html> 

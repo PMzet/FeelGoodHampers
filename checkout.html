@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Bloom & Gift</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Checkout Page Styles */
+        .page-title {
+            background-color: var(--gray-100);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .checkout-section {
+            padding: 60px 0;
+        }
+
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .checkout-form {
+            background-color: white;
+            border-radius: var(--card-border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .checkout-form h2 {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .checkout-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--button-border-radius);
+            font-family: var(--body-font);
+            font-size: 1rem;
+            color: var(--gray-800);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .order-summary {
+            background-color: white;
+            border-radius: var(--card-border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            align-self: start;
+            position: sticky;
+            top: 100px;
+        }
+
+        .order-summary h2 {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .order-summary h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .cart-items {
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--card-border-radius);
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .cart-item-price {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .cart-item-quantity {
+            margin-left: 15px;
+            background-color: var(--gray-100);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+        }
+
+        .order-totals {
+            margin-top: 20px;
+        }
+
+        .order-total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 5px 0;
+            font-size: 1rem;
+        }
+
+        .order-total-row.final {
+            border-top: 2px solid var(--gray-300);
+            margin-top: 10px;
+            padding-top: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        .delivery-options {
+            margin-bottom: 30px;
+        }
+
+        .delivery-option {
+            background-color: white;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--card-border-radius);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .delivery-option:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .delivery-option input {
+            margin-right: 15px;
+        }
+
+        .delivery-option-details {
+            flex: 1;
+        }
+
+        .delivery-option-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .delivery-option-description {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .delivery-option-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .payment-methods {
+            margin-bottom: 30px;
+        }
+
+        .payment-method-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .payment-method-option {
+            flex: 1;
+            min-width: 120px;
+            background-color: white;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--card-border-radius);
+            padding: 15px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-align: center;
+        }
+
+        .payment-method-option:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .payment-method-option.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .payment-method-option img {
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .payment-method-option h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .payment-form {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--gray-100);
+            border-radius: var(--card-border-radius);
+        }
+
+        .payment-form.active {
+            display: block;
+        }
+
+        .btn-block {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 992px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .order-summary {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .payment-method-options {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .payment-method-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:+263712345678"><i class="fas fa-phone"></i> +263 71 234 5678</a>
+                    <a href="mailto:info@bloomandgift.co.zw"><i class="fas fa-envelope"></i> info@bloomandgift.co.zw</a>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                    <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Bloom & Gift</h1>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="flowers.html">Flowers</a></li>
+                        <li><a href="gifts.html">Gifts</a></li>
+                        <li><a href="occasions.html">Occasions</a></li>
+                        <li><a href="custom.html">Custom Orders</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Checkout</h1>
+            <p>Complete your order and select your payment method</p>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h2>Billing Details</h2>
+                    <form id="checkout-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <h2>Delivery Options</h2>
+                        <div class="delivery-options">
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery-option" value="delivery" checked>
+                                <div class="delivery-option-details">
+                                    <div class="delivery-option-title">Home Delivery</div>
+                                    <div class="delivery-option-description">Get your items delivered to your doorstep</div>
+                                </div>
+                                <div class="delivery-option-price">From $5</div>
+                            </label>
+                            <label class="delivery-option">
+                                <input type="radio" name="delivery-option" value="pickup">
+                                <div class="delivery-option-details">
+                                    <div class="delivery-option-title">Store Pickup</div>
+                                    <div class="delivery-option-description">Pick up at our Harare store</div>
+                                </div>
+                                <div class="delivery-option-price">Free</div>
+                            </label>
+                        </div>
+                        
+                        <div id="delivery-address-container">
+                            <h2>Delivery Address</h2>
+                            <div class="form-group">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="delivery-region">Region *</label>
+                                    <select id="delivery-region" required>
+                                        <option value="">Select a region</option>
+                                        <option value="harare-cbd">Harare CBD</option>
+                                        <option value="harare-suburbs">Harare Suburbs</option>
+                                        <option value="chitungwiza">Chitungwiza</option>
+                                        <option value="bulawayo">Bulawayo</option>
+                                        <option value="other">Other Locations</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City/Town *</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery-instructions">Delivery Instructions (Optional)</label>
+                                <textarea id="delivery-instructions" rows="3" placeholder="Any specific instructions for the delivery driver..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <h2>Payment Method</h2>
+                        <div class="payment-methods">
+                            <div class="payment-method-options">
+                                <div class="payment-method-option active" data-payment-method="payfast">
+                                    <img src="images/payment/payfast.png" alt="Payfast">
+                                    <h3>Payfast</h3>
+                                </div>
+                                <div class="payment-method-option" data-payment-method="ecocash">
+                                    <img src="images/payment/ecocash.png" alt="Ecocash">
+                                    <h3>Ecocash</h3>
+                                </div>
+                                <div class="payment-method-option" data-payment-method="innbucks">
+                                    <img src="images/payment/innbucks.png" alt="Innbucks">
+                                    <h3>Innbucks</h3>
+                                </div>
+                                <div class="payment-method-option" data-payment-method="cash">
+                                    <i class="fas fa-money-bill-wave" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 10px; display: block;"></i>
+                                    <h3>Cash</h3>
+                                </div>
+                            </div>
+                            
+                            <!-- Payfast Form -->
+                            <div class="payment-form" data-payment-method="payfast" style="display: block;">
+                                <p>You will be redirected to Payfast to complete your payment securely.</p>
+                                <div class="form-group">
+                                    <label for="payfast-email">Payfast Email Address</label>
+                                    <input type="email" id="payfast-email" placeholder="Enter your Payfast email">
+                                </div>
+                            </div>
+                            
+                            <!-- Ecocash Form -->
+                            <div class="payment-form" data-payment-method="ecocash">
+                                <p>Please follow these steps to complete your Ecocash payment:</p>
+                                <ol>
+                                    <li>Enter your Ecocash registered phone number below.</li>
+                                    <li>After placing your order, you'll receive a prompt on your phone to complete the payment.</li>
+                                    <li>Enter your Ecocash PIN to confirm the payment.</li>
+                                </ol>
+                                <div class="form-group">
+                                    <label for="ecocash-number">Ecocash Phone Number</label>
+                                    <input type="tel" id="ecocash-number" placeholder="e.g., 077 123 4567">
+                                </div>
+                            </div>
+                            
+                            <!-- Innbucks Form -->
+                            <div class="payment-form" data-payment-method="innbucks">
+                                <p>Please follow these steps to complete your Innbucks payment:</p>
+                                <ol>
+                                    <li>Enter your Innbucks registered phone number below.</li>
+                                    <li>After placing your order, you'll receive payment instructions.</li>
+                                    <li>Complete the payment through your Innbucks app.</li>
+                                </ol>
+                                <div class="form-group">
+                                    <label for="innbucks-number">Innbucks Phone Number</label>
+                                    <input type="tel" id="innbucks-number" placeholder="e.g., 078 123 4567">
+                                </div>
+                            </div>
+                            
+                            <!-- Cash Form -->
+                            <div class="payment-form" data-payment-method="cash">
+                                <p>Pay with cash upon delivery or pickup.</p>
+                                <div class="form-group">
+                                    <label for="cash-note">Special Instructions (Optional)</label>
+                                    <textarea id="cash-note" rows="2" placeholder="Any notes regarding your cash payment..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="cart-items" id="cart-items-container">
+                        <!-- Sample cart items (will be populated dynamically in a real app) -->
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="images/products/red-rose-bouquet.jpg" alt="Red Rose Bouquet">
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">Red Rose Bouquet</div>
+                                <div class="cart-item-price">$35.99</div>
+                            </div>
+                            <div class="cart-item-quantity">x1</div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="images/products/mixed-tulips.jpg" alt="Mixed Tulips">
+                            </div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">Mixed Tulips</div>
+                                <div class="cart-item-price">$29.99</div>
+                            </div>
+                            <div class="cart-item-quantity">x1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-totals">
+                        <div class="order-total-row">
+                            <div>Subtotal</div>
+                            <div id="order-subtotal">$65.98</div>
+                        </div>
+                        <div class="order-total-row">
+                            <div>Delivery Fee</div>
+                            <div id="delivery-charge">$0.00</div>
+                        </div>
+                        <div class="order-total-row final">
+                            <div>Total</div>
+                            <div id="order-total">$65.98</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-widget">
+                        <h3>About Us</h3>
+                        <p>Bloom & Gift is Zimbabwe's premier flower and gift shop, specializing in beautiful floral arrangements, unique gifts, and custom money bouquets for all occasions.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="flowers.html">Flowers</a></li>
+                            <li><a href="gifts.html">Gifts</a></li>
+                            <li><a href="occasions.html">Occasions</a></li>
+                            <li><a href="custom.html">Custom Orders</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Customer Service</h3>
+                        <ul>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="delivery.html">Delivery Information</a></li>
+                            <li><a href="payment.html">Payment Options</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Contact Information</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Samora Machel Ave, Harare, Zimbabwe</li>
+                            <li><i class="fas fa-phone"></i> +263 71 234 5678</li>
+                            <li><i class="fas fa-envelope"></i> info@bloomandgift.co.zw</li>
+                            <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <p>&copy; 2023 Bloom & Gift. All Rights Reserved.</p>
+                </div>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <img src="images/payment/payfast.png" alt="Payfast">
+                    <img src="images/payment/ecocash.png" alt="Ecocash">
+                    <img src="images/payment/innbucks.png" alt="Innbucks">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle payment method selection
+            const paymentMethodOptions = document.querySelectorAll('.payment-method-option');
+            
+            paymentMethodOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    paymentMethodOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to selected option
+                    this.classList.add('active');
+                    
+                    // Show corresponding payment form
+                    const paymentMethod = this.getAttribute('data-payment-method');
+                    const paymentForms = document.querySelectorAll('.payment-form');
+                    
+                    paymentForms.forEach(form => {
+                        if (form.getAttribute('data-payment-method') === paymentMethod) {
+                            form.style.display = 'block';
+                        } else {
+                            form.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Handle delivery option selection
+            const deliveryOptions = document.querySelectorAll('input[name="delivery-option"]');
+            const deliveryAddressContainer = document.getElementById('delivery-address-container');
+            const regionSelect = document.getElementById('delivery-region');
+            
+            deliveryOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    if (this.value === 'delivery') {
+                        deliveryAddressContainer.style.display = 'block';
+                        calculateDeliveryCharge();
+                    } else {
+                        deliveryAddressContainer.style.display = 'none';
+                        updateOrderSummary(0); // Reset delivery charge
+                    }
+                });
+            });
+            
+            // Calculate delivery charge based on selected region
+            if (regionSelect) {
+                regionSelect.addEventListener('change', calculateDeliveryCharge);
+            }
+            
+            function calculateDeliveryCharge() {
+                if (!regionSelect) return;
+                
+                const region = regionSelect.value;
+                let deliveryCharge = 0;
+                
+                // Set delivery charge based on region
+                switch (region) {
+                    case 'harare-cbd':
+                        deliveryCharge = 5;
+                        break;
+                    case 'harare-suburbs':
+                        deliveryCharge = 8;
+                        break;
+                    case 'chitungwiza':
+                        deliveryCharge = 12;
+                        break;
+                    case 'bulawayo':
+                        deliveryCharge = 20;
+                        break;
+                    case 'other':
+                        deliveryCharge = 25;
+                        break;
+                    default:
+                        deliveryCharge = 0;
+                }
+                
+                updateOrderSummary(deliveryCharge);
+            }
+            
+            function updateOrderSummary(deliveryCharge) {
+                const deliveryChargeElement = document.getElementById('delivery-charge');
+                const orderTotalElement = document.getElementById('order-total');
+                
+                if (deliveryChargeElement && orderTotalElement) {
+                    // Update delivery charge
+                    deliveryChargeElement.textContent = `$${deliveryCharge.toFixed(2)}`;
+                    
+                    // Get subtotal
+                    const subtotalText = document.getElementById('order-subtotal').textContent;
+                    const subtotal = parseFloat(subtotalText.replace('$', ''));
+                    
+                    // Calculate new total
+                    const total = subtotal + deliveryCharge;
+                    
+                    // Update total
+                    orderTotalElement.textContent = `$${total.toFixed(2)}`;
+                }
+            }
+            
+            // Handle form submission
+            const checkoutForm = document.getElementById('checkout-form');
+            
+            if (checkoutForm) {
+                checkoutForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    // Here you would typically send the form data to your backend
+                    // For demonstration purposes, we'll just show an alert
+                    alert('Thank you for your order! We have received your payment information and will process your order shortly.');
+                    
+                    // In a real application, you would redirect to a thank you page
+                    // window.location.href = 'thank-you.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

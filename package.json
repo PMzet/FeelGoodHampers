@@ -1,0 +1,16 @@
+{
+  "name": "bloom-and-gift",
+  "version": "1.0.0",
+  "description": "A flower and gift shop website for Zimbabwe",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 

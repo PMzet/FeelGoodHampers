@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Orders - Bloom & Gift</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Page Styles */
+        .custom-order-section {
+            padding: 80px 0;
+        }
+
+        .custom-order-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .custom-order-image {
+            border-radius: var(--card-border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-order-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .custom-order-content h2 {
+            font-family: var(--heading-font);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .custom-order-content p {
+            margin-bottom: 20px;
+            color: var(--gray-700);
+            line-height: 1.8;
+        }
+
+        .custom-order-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .custom-order-option {
+            background-color: white;
+            border-radius: var(--card-border-radius);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .custom-order-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .custom-order-option i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .custom-order-option h3 {
+            font-family: var(--heading-font);
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .calculator-section {
+            padding: 80px 0;
+            background-color: var(--gray-100);
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--card-border-radius);
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .calculator-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--button-border-radius);
+            font-family: var(--body-font);
+            font-size: 1rem;
+            color: var(--gray-800);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .calculator-result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: var(--card-border-radius);
+            background-color: var(--gray-100);
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .custom-order-container {
+                grid-template-columns: 1fr;
+            }
+
+            .custom-order-options {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:+263712345678"><i class="fas fa-phone"></i> +263 71 234 5678</a>
+                    <a href="mailto:info@bloomandgift.co.zw"><i class="fas fa-envelope"></i> info@bloomandgift.co.zw</a>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                    <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Bloom & Gift</h1>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="flowers.html">Flowers</a></li>
+                        <li><a href="gifts.html">Gifts</a></li>
+                        <li><a href="occasions.html">Occasions</a></li>
+                        <li><a href="custom.html" class="active">Custom Orders</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Custom Orders</h1>
+            <p>Create a unique and personalized floral arrangement or gift</p>
+        </div>
+    </section>
+
+    <!-- Custom Order Options -->
+    <section class="custom-order-section">
+        <div class="container">
+            <div class="custom-order-container">
+                <div class="custom-order-image">
+                    <img src="images/custom-order.jpg" alt="Custom Floral Arrangements">
+                </div>
+                <div class="custom-order-content">
+                    <h2>Create Something Unique</h2>
+                    <p>At Bloom & Gift, we understand that sometimes you need something truly special and personalized. Our custom order options allow you to create unique arrangements that perfectly match your vision and requirements.</p>
+                    <div class="custom-order-options">
+                        <div class="custom-order-option">
+                            <i class="fas fa-flower"></i>
+                            <h3>Custom Floral Arrangements</h3>
+                            <p>Create a unique floral arrangement with your preferred flowers and colors.</p>
+                        </div>
+                        <div class="custom-order-option">
+                            <i class="fas fa-gift"></i>
+                            <h3>Personalized Gift Baskets</h3>
+                            <p>Curate a custom gift basket filled with your loved one's favorite items.</p>
+                        </div>
+                        <div class="custom-order-option">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h3>Money Bouquets</h3>
+                            <p>Create stunning money flower arrangements for special occasions.</p>
+                        </div>
+                        <div class="custom-order-option">
+                            <i class="fas fa-calendar-check"></i>
+                            <h3>Event Decorations</h3>
+                            <p>Custom floral arrangements and décor for weddings and special events.</p>
+                        </div>
+                    </div>
+                    <p>For any custom order requests, please contact us directly at <a href="tel:+263712345678">+263 71 234 5678</a> or fill out our <a href="contact.html">contact form</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Money Bouquet Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Money Bouquet Calculator</h2>
+            <p class="text-center">Use our calculator to estimate the price of your custom money bouquet arrangement.</p>
+            
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="money-amount">Money Amount:</label>
+                            <input type="number" id="money-amount" placeholder="Enter amount" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="money-currency">Currency:</label>
+                            <select id="money-currency">
+                                <option value="usd">USD ($)</option>
+                                <option value="zwl">ZWL (Z$)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bouquet-style">Bouquet Style:</label>
+                        <select id="bouquet-style">
+                            <option value="standard">Standard Money Bouquet</option>
+                            <option value="premium">Premium Money Bouquet (with fresh flowers)</option>
+                            <option value="luxury">Luxury Money Bouquet (with premium flowers & gifts)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bouquet-message">Special Instructions (Optional):</label>
+                        <textarea id="bouquet-message" placeholder="Any special requests or details about your money bouquet..."></textarea>
+                    </div>
+                    <button id="calculate-bouquet-price" class="btn btn-primary">Calculate Price</button>
+                </div>
+                <div class="calculator-result" id="bouquet-price-result">
+                    Enter your details and click calculate to see the estimated price.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Order Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Custom Order Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Consultation</h3>
+                        <p>Discuss your requirements and preferences with our floral designers either in-store, via phone, or email.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Proposal</h3>
+                        <p>Receive a detailed proposal including design concepts, price quotation, and delivery options.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Confirmation</h3>
+                        <p>Review and approve the proposal, make any necessary adjustments, and confirm your order with payment.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Creation & Delivery</h3>
+                        <p>Our skilled florists will create your custom arrangement and deliver it to your specified location on time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say About Custom Orders</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"I ordered a money bouquet for my sister's graduation and it was absolutely perfect! The creativity and attention to detail were impressive. Everyone loved it and it made her day special."</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonials/customer-2.jpg" alt="Customer 2">
+                            <div class="author-info">
+                                <h4>Nyasha K.</h4>
+                                <span>Bulawayo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The custom gift basket I ordered for my mom's birthday was beyond my expectations. They took all my suggestions and added their creative touch to make it truly special. The presentation was beautiful!"</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonials/customer-4.jpg" alt="Customer 4">
+                            <div class="author-info">
+                                <h4>Chiedza M.</h4>
+                                <span>Harare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Bloom & Gift created stunning floral arrangements for my wedding. They listened to my vision and delivered beyond my expectations. The flowers were fresh, beautiful, and perfectly arranged. Highly recommend their custom services!"</p>
+                        <div class="testimonial-author">
+                            <img src="images/testimonials/customer-5.jpg" alt="Customer 5">
+                            <div class="author-info">
+                                <h4>Rumbidzai C.</h4>
+                                <span>Mutare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <div class="testimonial-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Create Your Custom Arrangement?</h2>
+                <p>Contact us today to start discussing your unique floral or gift requirements.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Contact Us Now</a>
+                    <a href="tel:+263712345678" class="btn btn-outline-light">Call Us: +263 71 234 5678</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-widget">
+                        <h3>About Us</h3>
+                        <p>Bloom & Gift is Zimbabwe's premier flower and gift shop, specializing in beautiful floral arrangements, unique gifts, and custom money bouquets for all occasions.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="flowers.html">Flowers</a></li>
+                            <li><a href="gifts.html">Gifts</a></li>
+                            <li><a href="occasions.html">Occasions</a></li>
+                            <li><a href="custom.html">Custom Orders</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Customer Service</h3>
+                        <ul>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="delivery.html">Delivery Information</a></li>
+                            <li><a href="payment.html">Payment Options</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h3>Contact Information</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Samora Machel Ave, Harare, Zimbabwe</li>
+                            <li><i class="fas fa-phone"></i> +263 71 234 5678</li>
+                            <li><i class="fas fa-envelope"></i> info@bloomandgift.co.zw</li>
+                            <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <p>&copy; 2023 Bloom & Gift. All Rights Reserved.</p>
+                </div>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <img src="images/payment/payfast.png" alt="Payfast">
+                    <img src="images/payment/ecocash.png" alt="Ecocash">
+                    <img src="images/payment/innbucks.png" alt="Innbucks">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+    <script>
+        // Enhanced money bouquet calculator
+        document.addEventListener('DOMContentLoaded', function() {
+            const moneyAmountInput = document.getElementById('money-amount');
+            const currencySelect = document.getElementById('money-currency');
+            const bouquetStyleSelect = document.getElementById('bouquet-style');
+            const calculateBtn = document.getElementById('calculate-bouquet-price');
+            const bouquetPriceResult = document.getElementById('bouquet-price-result');
+            
+            if (calculateBtn) {
+                calculateBtn.addEventListener('click', function() {
+                    const amount = parseFloat(moneyAmountInput.value);
+                    const currency = currencySelect.value;
+                    const bouquetStyle = bouquetStyleSelect.value;
+                    
+                    if (isNaN(amount) || amount <= 0) {
+                        bouquetPriceResult.textContent = 'Please enter a valid amount';
+                        bouquetPriceResult.style.color = 'red';
+                        return;
+                    }
+                    
+                    // Base arrangement fee based on style
+                    let baseFee = 15; // Standard
+                    if (bouquetStyle === 'premium') {
+                        baseFee = 25; // Premium with fresh flowers
+                    } else if (bouquetStyle === 'luxury') {
+                        baseFee = 40; // Luxury with premium flowers & gifts
+                    }
+                    
+                    // Percentage fee based on currency and amount
+                    let percentageFee = 0;
+                    if (currency === 'usd') {
+                        percentageFee = amount * 0.10; // 10% of USD amount
+                    } else if (currency === 'zwl') {
+                        percentageFee = amount * 0.05; // 5% of ZWL amount
+                    }
+                    
+                    const totalPrice = baseFee + percentageFee;
+                    const currencySymbol = currency === 'usd' ? '$' : 'Z$';
+                    
+                    bouquetPriceResult.innerHTML = `<strong>Estimated Bouquet Price:</strong> ${currencySymbol}${totalPrice.toFixed(2)}<br>
+                                                 <small>(Includes ${currencySymbol}${baseFee.toFixed(2)} base fee + ${currencySymbol}${percentageFee.toFixed(2)} arrangement fee)</small>`;
+                    bouquetPriceResult.style.color = 'var(--primary-color)';
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
